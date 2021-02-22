@@ -1,0 +1,34 @@
+
+
+<div class="container pb-5">
+    <div class="col-md-6 d-flex justify-content-center">
+        <app-search-field (event)="search($event)"></app-search-field>
+    </div>
+    <section class="col-md-5" *ngFor="let feature of features">
+        <div class="section-header">
+            <h2>{{feature.displayName}}</h2>
+        </div>
+        <div class="form-group">
+            <h3 class="h6">Technical name</h3>
+            <p class="h5">{{feature.technicalName}}</p>
+        </div>
+        <div class="form-group">
+            <h3 class="h6">Description</h3>
+            <p>{{feature.description}}</p>
+        </div>
+        <div class="form-group">
+            <h3 class="h6">Expires on</h3>
+            <p>{{feature.expiresOn | date: 'medium'}}</p>
+            <p *ngIf="!feature.expiresOn">
+                None
+            </p>
+        </div>
+
+        <div class="form-group">
+            
+            <p *ngIf="!feature.inverted">
+                <strong>Inverted</strong>
+            </p>
+        </div>
+    </section>
+</div>

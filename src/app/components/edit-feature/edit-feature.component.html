@@ -1,0 +1,9 @@
+<div class="container pb-5" >
+    <div class="col-md-6 d-flex justify-content-center">
+        <app-search-field (event)="search($event)"></app-search-field>
+    </div>
+    <div class="row" *ngIf="feature">
+        <app-feature-form [feature]="feature" 
+        (saveEvent)="update($event)"></app-feature-form>
+    </div>
+</div>

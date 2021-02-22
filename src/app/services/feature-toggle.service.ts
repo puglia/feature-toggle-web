@@ -30,52 +30,23 @@ export class FeatureToggleService {
     ));
   }
 
-  /*public list(numfunc: number) {
-    return new Promise((resolve, reject) => {
-      this.httpClient.get(`${this._url + Routes.REPRESENTANTES}/${numfunc}`)
-        .toPromise()
-        .then(response => {
-          resolve(response);
-        })
-        .catch(errorResponse => {
-          if (errorResponse.status == HttpStatusCodes.NOT_FOUND)
-            resolve([]);
-          else
-            reject(errorResponse.error);
-        });
-    });
+  
+  public find(id: number): Observable<Feature> {
+    return this.httpClient.get<Feature>(`${this.base_url}/${id.toString()}`).pipe(
+        map((res) => {
+          return res;
+        }
+    ));
   }
 
-  public put(representante) {
-    return new Promise((resolve, reject) => {
-      this.httpClient.put(this._url + Routes.REPRESENTANTES, this._representanteAdapter.adaptTo(representante))
-        .toPromise()
-        .then(response => {
-          resolve(response);
-        })
-        .catch(errorResponse => {
-          reject(errorResponse.error);
-        });
-    });
+  public list(id: number): Observable<Feature[]> {
+      return this.httpClient.get<Feature[]>(`${this.base_url}/list/${id.toString()}`)
+        .pipe(
+          map((res) => {
+            return res;
+          }
+      ));
   }
 
-  public sync(form: FormGroup,representante: Representante){
-    for(let entry of Object.entries(form.controls)){
-      let name = entry[0];
-      let control = entry[1];
-      if (control.dirty) {
-        if(representante[name] instanceof Date)
-        representante[name] = new Date(control.value);
-        else
-        representante[name] = control.value;
-      }
-    }
-    return representante;
-  }
-
-  public getOriginal(id: number): Observable<Representante> {
-    return this.httpClient.get<Representante>(
-      `${this._url + Routes.REPRESENTANTES_ORIGINAL}?id=${id.toString()}`);
-    }*/
     
 }

@@ -7,7 +7,6 @@ export class Feature {
    technicalName: string;
    expiresOn: Date;
    description: string;
-   inverted: boolean;
-   customers: number[];
-
+   inverted: boolean = false;
+   customers: number[] = [];
 }
