@@ -3,9 +3,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxMaskModule } from 'ngx-mask';
+import { ToastrModule } from 'ngx-toastr';
 import { of } from 'rxjs/internal/observable/of';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Feature } from 'src/app/model/feature';
@@ -34,7 +36,9 @@ describe('NewFeatureComponent', () => {
           FormsModule,
           HttpClientModule,
           ReactiveFormsModule,
-          RouterModule.forRoot([])
+          RouterModule.forRoot([]),
+          ToastrModule.forRoot(),
+          BrowserAnimationsModule
         ],
       providers: [{provide: APP_BASE_HREF, useValue: ''},
                   {provide: FeatureToggleService, useValue: {
