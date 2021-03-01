@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "feature-toggle-web"
+    }
+  },
+  "defaultProject": "feature-toggle-web",
+  "cli": {
+    "analytics": false
+  }
 }

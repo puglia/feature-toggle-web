@@ -163,10 +163,6 @@ h6 {
   padding-bottom: 3rem !important;
 }
 
-.row {
-  margin-bottom: 1.5rem;
-}
-
 .form-group {
   border: 1px solid #fff;
   border-radius: 3px;
@@ -177,7 +173,41 @@ h6 {
   line-height: 2.5em;
 }
 
-.form-group label {
+.input-group {
+  margin-right: .5em;
+  margin-bottom: .5em;
+
+  border: 1px solid #666;
+  border-radius: 3px;
+  background-color: #eee;
+}
+
+.input-group input{
+  margin-right: .3em;
+  margin-bottom: .3em;
+  background-color: white;
+}
+
+span.col-md-1,span.col-md-2,span.col-md-4,span.col-md-6,
+span.col-md-8,span.col-md-10{
+  margin-right: .3em;
+  margin-bottom: .3em;
+  margin-top: .3em;
+}
+
+.input-group label {
   margin-left: .5em;
   margin-right: 2em;
+}
+
+button.remove-button{
+  margin-right: .3em;
+  margin-bottom: .3em;
+  padding: 0;
+  width: 2em;
+}
+
+.id-list{
+  margin-bottom: 1em;
+  margin-top: 1em;
 }

@@ -1,9 +1,9 @@
-<div class="col-md-10">
+<div class="container">
     <p><strong>Fields marked with a (<span class="text-danger">*</span>) should be filled.</strong>
     </p>
     <form [formGroup]="form">
         <div class="row">
-            <div class="form-group col-sm-10">
+            <div class="input-group  col-sm-10 col-md-4">
                 
                 <label for="displayName" class="control-label required">Display Name</label>
 
@@ -16,7 +16,7 @@
                     <div [hidden]="!control('displayName').errors.maxlength">Field limit is 128.</div>
                 </div>
             </div>
-            <div class="form-group col-sm-10">
+            <div class="input-group col-sm-10 col-md-4">
                 <label for="technicalName" class="control-label required">Technical Name</label>
 
                 <input formControlName="technicalName" size="128"
@@ -28,48 +28,64 @@
                         <div [hidden]="!control('technicalName').errors.maxlength">Field limit is 128.</div>
                     </div>
             </div>
+        </div>
+        <div class="row">
 
-            <div class="form-group col-sm-4">
+            <div class="input-group col-sm-10 col-md-2">
                 <label for="expiresOn" class="control-label ">Expiration Date</label>
                 <input formControlName="expiresOn" mask="99999999" size="8" maxlength="8" class="form-control" type="date"
                     name="expiresOn" id="expiresOn" aria-label="" placeholder=""  />                       
             </div>
 
-            <div class="form-group col-sm-6">
+            <div class="input-group col-sm-10 col-md-6">
                 <label for="description" class="control-label ">Description</label>
 
                 <input formControlName="description" size="256"
                     maxlength="128" class="form-control" type="text" name="description" id="description"/>
                 
             </div>
-            <div class="form-group col-sm-10">
-                <label for="inverted" class="">Active</label>
-                <label class="switch">
-                    <input  formControlName="inverted" type="checkbox" value="true" name="inverted" id="inverted">
-                    <span class="slider round"></span>
-                </label>
-            </div>
+        </div>
+        <div class="row">
+            <div class="input-group col-sm-10 col-md-8">
+                <div class="row">
+                    <div class="col-sm-2 col-md-4">
+                        <label for="inverted" class="">Active</label>
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <label class="switch">
+                            <input  formControlName="inverted" type="checkbox" value="true" name="inverted" id="inverted">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
 
-            <app-customer-id-form class="form-group col-sm-10" (commitEvent)="commit($event)"></app-customer-id-form>
-            
-            <div class="form-group col-sm-6" *ngIf="!deleteMode && feature.customers.length > 0">
-                <span *ngFor="let customerId of feature.customers">
-                    {{customerId}}
-                </span>
-                <div>
-                <button (click)="deleteMode = true"
-                    class='btn btn-primary'>Remove</button>
                 </div>
             </div>
-            <div class="form-group col-sm-6" *ngIf="deleteMode && feature.customers.length > 0">
-                <span *ngFor="let customerId of feature.customers">
-                   <button (click)="remove(customerId)"> 
-                       {{customerId}}
-                    </button>
-                </span>
-                <div>
-                <button (click)="deleteMode = false"
-                    class='btn btn-primary'>Finish</button>
+        </div>
+        
+        <app-customer-id-form class="" (commitEvent)="commit($event)"></app-customer-id-form>
+        <div class="row">  
+            <div class="input-group col-sm-10 col-md-8" *ngIf="!deleteMode && feature.customers.length > 0">
+                <div class="col-md-8 id-list">
+                    <span class="col-md-1" *ngFor="let customerId of feature.customers">
+                        {{customerId}}
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <button (click)="deleteMode = true"
+                        class='btn btn-primary'>Remove</button>
+                </div>
+            </div>
+            <div class="input-group col-sm-10 col-md-8" *ngIf="deleteMode && feature.customers.length > 0">
+                <div class="col-md-10 id-list">
+                    <span *ngFor="let customerId of feature.customers">
+                    <button class="col-md-1 remove-button" (click)="remove(customerId)"> 
+                        {{customerId}}
+                        </button>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <button (click)="deleteMode = false"
+                     class='btn btn-primary'>Finish</button>
                 </div>
             </div>
         </div>

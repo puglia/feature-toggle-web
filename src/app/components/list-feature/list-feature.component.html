@@ -4,31 +4,31 @@
     <div class="col-md-6 d-flex justify-content-center">
         <app-search-field (event)="search($event)"></app-search-field>
     </div>
-    <section class="col-md-5" *ngFor="let feature of features">
-        <div class="section-header">
-            <h2>{{feature.displayName}}</h2>
+    <section class="" *ngFor="let feature of features">
+        <div class="row section-header">
+            <h4><a href="/edit/{{feature.id}}">{{feature.displayName}}</a></h4>
         </div>
-        <div class="form-group">
-            <h3 class="h6">Technical name</h3>
-            <p class="h5">{{feature.technicalName}}</p>
-        </div>
-        <div class="form-group">
-            <h3 class="h6">Description</h3>
-            <p>{{feature.description}}</p>
-        </div>
-        <div class="form-group">
-            <h3 class="h6">Expires on</h3>
-            <p>{{feature.expiresOn | date: 'medium'}}</p>
-            <p *ngIf="!feature.expiresOn">
-                None
-            </p>
-        </div>
-
-        <div class="form-group">
-            
-            <p *ngIf="!feature.inverted">
-                <strong>Inverted</strong>
-            </p>
+        <div class="row">
+            <div class="input-group row col-sm-8 col-md-4">
+                <p class="col-sm-6 col-md-5"><strong>Technical name:</strong></p>
+                <p class="col-sm-6 col-md-7">{{feature.technicalName}}</p>
+            </div>
+            <div class="input-group row col-sm-8 col-md-4">
+                <p class="col-sm-6 col-md-4"><strong>Description:</strong></p>
+                <p class="col-sm-6 col-md-8">{{feature.description}}</p>
+            </div>
+            <div class="input-group row col-sm-8 col-md-4">
+                <p class="col-sm-6 col-md-4"><strong>Expires on:</strong></p>
+                <p class="col-sm-6 col-md-8" *ngIf="feature.expiresOn">{{feature.expiresOn | date: 'medium'}}</p>
+                <p class="col-sm-6 col-md-8" *ngIf="!feature.expiresOn">
+                    None
+                </p>
+            </div>
+            <div class="input-group row col-sm-8 col-md-5">
+                <p *ngIf="!feature.inverted">
+                    <strong>Inverted</strong>
+                </p>
+            </div>
         </div>
     </section>
 </div>
