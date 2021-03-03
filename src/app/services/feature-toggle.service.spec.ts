@@ -1,6 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { of } from "rxjs";
 import { Feature } from "../model/feature";
+import { Page } from "../model/page";
 import { FeatureBuilder } from "../utils/feature-builder";
 import { FeatureToggleService } from "./feature-toggle.service";
 
@@ -30,12 +31,12 @@ it('should find feature', () => {
 });
 
 it('should list features', () => {
-  let mockedFeatures: Feature[] = new FeatureBuilder().list(5);
+  let mockedFeatures: Page<Feature> = new FeatureBuilder().page(5);
 
   httpSpy.get.and.returnValue(of(mockedFeatures));
 
   service.list(1).subscribe(
-    features => expect(features).toEqual(mockedFeatures)
+    page => expect(page).toEqual(mockedFeatures)
   );
   expect(httpSpy.get.calls.count()).toBe(1);
 });

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { build$ } from 'protractor/built/element';
 import { Feature } from '../model/feature';
+import { Page } from '../model/page';
 
 export class FeatureBuilder {
    id: number; 
@@ -49,11 +50,24 @@ export class FeatureBuilder {
    }
 
    list(size){
+      
       let list: Feature[] = [];
       for(let i = 0; i < size; i++){
          this.id += 1;
          list.push(this.build());
       }
       return list;
+   }
+
+   page(size): Page<Feature> {
+      return {
+         content: this.list(size),
+         totalElements: size,
+         totalPages: 1,
+         number: 1,
+         numberOfElements: size,
+         size: size
+
+      };
    }
 }

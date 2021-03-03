@@ -25,7 +25,7 @@ describe('ListFeatureComponent', () => {
         ],
       providers: [{provide: APP_BASE_HREF, useValue: ''},
                   {provide: FeatureToggleService, useValue: {
-                    list: (id) => of(new FeatureBuilder().list(5))
+                    list: (id) => of(new FeatureBuilder().page(5))
                   }}
       ]
     })
