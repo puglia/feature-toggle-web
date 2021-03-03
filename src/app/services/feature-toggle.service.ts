@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { FormGroup } from '@angular/forms';
 import { Feature } from '../model/feature';
 import { map } from "rxjs/operators";
+import { Page } from '../model/page';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,8 @@ export class FeatureToggleService {
     ));
   }
 
-  public list(id: number): Observable<Feature[]> {
-      return this.httpClient.get<Feature[]>(`${this.base_url}/list/${id.toString()}`)
+  public list(id: number): Observable<Page<Feature>> {
+      return this.httpClient.get<Page<Feature>>(`${this.base_url}/list/${id.toString()}`)
         .pipe(
           map((res) => {
             return res;

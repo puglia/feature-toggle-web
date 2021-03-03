@@ -27,7 +27,7 @@ export class ListFeatureComponent implements OnInit {
 
     let id = parseInt(text);
     this.featureToggleService.list(id).subscribe(
-      response => this.features = response
+      response => this.features = response.content
     );
   }
 
